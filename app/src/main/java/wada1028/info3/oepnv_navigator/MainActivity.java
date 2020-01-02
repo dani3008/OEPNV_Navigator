@@ -20,8 +20,7 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 
 public class MainActivity extends AppCompatActivity {
-    //Testwerte für Haltestellen:
-    //private static final String[] STOPS = new String[]{"Europaplatz","Markplatz","Herrenstraße"};
+    private static final String[] STOPS = new String[]{"Europaplatz","Markplatz","Herrenstraße"};
 
     private AppBarConfiguration mAppBarConfiguration;
     @Override
