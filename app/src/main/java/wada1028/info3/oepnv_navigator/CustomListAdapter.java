@@ -1,23 +1,19 @@
 package wada1028.info3.oepnv_navigator;
 
 import android.app.Activity;
-import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.RotateAnimation;
 import android.widget.ArrayAdapter;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import wada1028.info3.oepnv_navigator.ui.home.Routing_Activity;
+import wada1028.info3.oepnv_navigator.ui.home.LegListView;
 
 
 public class CustomListAdapter extends ArrayAdapter <HashMap> {
@@ -42,7 +38,7 @@ public class CustomListAdapter extends ArrayAdapter <HashMap> {
         TextView textViewDepTim = (TextView) convertView.findViewById(R.id.textViewDepTim);
         TextView textViewArrLoc = (TextView) convertView.findViewById(R.id.textViewArrLoc);
         TextView textViewArrTim = (TextView) convertView.findViewById(R.id.textViewArrTim);
-        TextView textViewTransport = (TextView)convertView.findViewById(R.id.textViewTransport);
+        TextView textViewTransport = (TextView)convertView.findViewById(R.id.textViewTransportation);
         //Liste auslesen
         //Map for Times
         HashMap legHashMap = (HashMap) journeyList.get(position).get("legTime");
@@ -51,11 +47,10 @@ public class CustomListAdapter extends ArrayAdapter <HashMap> {
         HashMap transHashMap = (HashMap)journeyList.get(position).get("transportation");
         int lengthTransHashMap = transHashMap.size();
         String transportModes = "";
-
         //Departure Output
         String departureTimeString =(String) legHashMap.get("departureTimePlanned0");
-        textViewDepTim.setText(Routing_Activity.dateParse(departureTimeString));
-        textViewDepLoc.setText(Routing_Activity.startHalteString);
+        textViewDepTim.setText(LegListView.dateParse(departureTimeString));
+        textViewDepLoc.setText(LegListView.startHalte);
         //Transportation
         for(int i =0;i<lengthTransHashMap;i++){
             if(i>0){
@@ -64,12 +59,12 @@ public class CustomListAdapter extends ArrayAdapter <HashMap> {
             transportModes = transportModes + transHashMap.get("name"+i);
         }
         textViewTransport.setText(transportModes);
-
         //Arrival Output
         String arrivalTimeString = (String) legHashMap.get("arrivalTimePlanned"+((lengthLegHashMap/2)-1));
-        textViewArrTim.setText(Routing_Activity.dateParse(arrivalTimeString));
-        textViewArrLoc.setText(Routing_Activity.zielHalteString);
+        textViewArrTim.setText(LegListView.dateParse(arrivalTimeString));
+        textViewArrLoc.setText(LegListView.zielHalte);
+
 
         return convertView;
-    }
+    };
 }
