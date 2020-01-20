@@ -1,6 +1,9 @@
 package wada1028.info3.oepnv_navigator.ui.gallery;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,19 +19,33 @@ public class GalleryFragment extends Fragment {
 
 
     private GalleryViewModel galleryViewModel;
+    private String email = "OEPNVnavigator@gmail.com";
 
     public View onCreateView(@NonNull LayoutInflater inflater,
-            ViewGroup container, Bundle savedInstanceState) {
+                             ViewGroup container, Bundle savedInstanceState) {
         galleryViewModel =
                 ViewModelProviders.of(this).get(GalleryViewModel.class);
         View root = inflater.inflate(R.layout.fragment_gallery, container, false);
-        final TextView textView = root.findViewById(R.id.text_gallery);
-        galleryViewModel.getText().observe(this, new Observer<String>() {
+        final TextView textViewAnschrift = root.findViewById(R.id.text_anschrift);
+        final TextView textViewKontakt =root.findViewById(R.id.text_kontakt);
+        final TextView textViewEmailemail= root.findViewById(R.id.text_emailemail);
+        final TextView textViewEmail= root.findViewById(R.id.text_email);
+        final TextView textViewRechtsform= root.findViewById(R.id.text_rechtsform);
+        textViewEmail.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
+            public void onClick(View v) {
+                Uri uri = Uri.parse("mailto:" + email)
+                        .buildUpon()
+                        .appendQueryParameter("subject", "Rückmeldung zur ÖPNV Navigator App")
+                        .appendQueryParameter("to",email)
+                        .build();
+
+                Intent emailIntent = new Intent(Intent.ACTION_SENDTO, uri);
+                startActivity(Intent.createChooser(emailIntent, "E-mail senden mit..."));
             }
         });
+
+
         return root;
     }
 }

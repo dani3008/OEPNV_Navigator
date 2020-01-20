@@ -8,7 +8,13 @@
     <!--string name="action_settings">Settings</string-->
     <string name="access_token">pk.eyJ1Ijoic2JydW5rIiwiYSI6ImNpamUwaTRvdzAwMmJ2Zmx5bTY1cGJrdzgifQ.-6YjnfjkAl1WrxHQLqRYdA</string>
     <string name="menu_verbindung">Verbindung</string>
-    <string name="menu_abfahrten">Abfahrten</string>
+    <string name="menu_impressum">Impressum</string>
     <string name="menu_liniennetzplan">Liniennetzplan</string>
     <string name="menu_karte">Karte</string>
+    <string name="anschrift_impressum">\n \n &#214;PNV Navigator AG \n Moltkestraße 30 \n 76133 Karlsruhe</string>
+    <string name="kontakt_impressunm">\n \n Telefon: 0180 6 996633 (20ct/anruf aus dem Festnetz, Tarif bei Mobilfunk max. 60 ct/Anruf)</string>
+    <string name="emailemail_impressum">E-mail:&#32;</string>
+    <string name="email_impressum">OEPNVnavigator@gmail.com</string>
+    <string name="rechtsform_impressum">\n \n Die &#214;PNV Navigator AG wird vertreten durch die Vorsitzenden der Geschäftsführung Frau Luisa Griesbach, Frau Daniela Wagner und Frau Julia Grewal.  </string>
+
 </resources>
